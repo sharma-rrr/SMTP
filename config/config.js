@@ -4,11 +4,11 @@ const path = require('path');
 
 module.exports = {
   development: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
+    username: process.env.DBUSER,
+    password: process.env.DBPASS,
+    database: process.env.DBNAME,
+    host: process.env.DBHOST,
+    port: process.env.DBORT,
     dialect: 'mysql',
     dialectOptions: {
       ssl: {
