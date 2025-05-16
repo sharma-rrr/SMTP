@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import nodemailer, { Transporter } from 'nodemailer';
 import { Sequelize, QueryTypes } from 'sequelize';
+import axios from 'axios';
 
 
 
@@ -73,7 +74,10 @@ app.get('/getappdata', async (req: Request, res: Response) => {
     }
 });
 
-
+app.get('/get', (req, res) => {
+  res.send('get data????????????????>>>>>>>>>>>>>>>>>>>>');
+  console.log("get data");
+});
 
 
 const PORT = 3000;
