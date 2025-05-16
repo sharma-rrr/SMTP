@@ -35,21 +35,16 @@ app.post('/send-email', async (req: Request, res: Response): Promise<void> => {
     }
 });
 
-// ✅ Sequelize setup with mysql2 (make sure env vars are set in Vercel)
+
 const sequelize = new Sequelize(
-  process.env.DBNAME || 'appdata',
-  process.env.DBUSER || 'doadmin',
-  process.env.DBPASS || '',
+  'ludo',
+  'doadmin',
+  'AVNS_wv6o4ceCzPi2A4IbQ7T',
   {
-    host: process.env.DBHOST,
-    port: 25060, // ✅ DigitalOcean MySQL default port
+    host: 'db-mysql-blr1-65686-do-user-9331108-0.m.db.ondigitalocean.com',
+    port: 25060,
     dialect: 'mysql',
     dialectModule: require('mysql2'),
-    dialectOptions: {
-      ssl: {
-        rejectUnauthorized: true,
-      }
-    },
     logging: false
   }
 );
@@ -58,6 +53,9 @@ const sequelize = new Sequelize(
 
 app.get('/getappdata', async (req: Request, res: Response) => {
     try {
+
+        console.log(sequelize,"sequilierfetf");
+        
         const sql = `SELECT * FROM appdata`;
         const getdata = await sequelize.query(sql, { type: QueryTypes.SELECT });
 
