@@ -1,9 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import nodemailer, { Transporter } from 'nodemailer';
 import { Sequelize, QueryTypes } from 'sequelize';
-import axios from 'axios';
-
-
+import * as mysql from 'mysql2';
 
 const app: Application = express();
 app.use(express.json());
@@ -41,11 +39,11 @@ app.post('/send-email',async (req: Request, res: Response,): Promise<void> => {
 
 // Sequelize instance using your env variables
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'appdata',
-  process.env.DB_USER || 'root',
-  process.env.DB_PASS || '',
+  process.env.DBNAME || 'appdata',
+  process.env.DBUSER || 'root',
+  process.env.DBPASS || '',
   {
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DBHOST || 'localhost',
     dialect: 'mysql',
   }
 );
